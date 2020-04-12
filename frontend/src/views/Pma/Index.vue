@@ -1,0 +1,61 @@
+<template>
+  <div class="card">
+    <div class="card-header">
+      <h1 class="card-title">PMA</h1>
+      <x-btn class="btn-sm btn-icon" :to="`/${$route.meta.resource}/create`">
+        Add PMA
+        <i class="fa fa-plus ml-1"></i>
+      </x-btn>
+    </div>
+
+    <x-table :columns="columns" :rows="data" @onRequest="loadData" :pagination.sync="pagination">
+      <template v-slot:header="{ columns }">
+        <thead>
+          <tr>
+            <th v-for="col in columns" :key="col">{{ col }}</th>
+          </tr>
+        </thead>
+      </template>
+
+      <template v-slot:body="{ rows }">
+        <tbody>
+          <tr v-for="(d, index) in rows" :key="index">
+            <td>
+              <router-link :to="`/${$route.meta.resource}/${d.id}`">{{ d.name }}</router-link>
+            </td>
+            <td>{{ d.pma_code }}</td>
+            <td>{{ d.pma_id }}</td>
+            <td>{{ d.district ? d.district.name : '-' }}</td>
+            <td>{{ d.hht ? d.hht.serial_no : '-' }}</td>
+            <td>{{ d.hhp ? d.hhp.serial_no : '-' }}</td>
+          </tr>
+        </tbody>
+      </template>
+    </x-table>
+  </div>
+</template>
+
+<script>
+// @ is an alias to /src
+import Button from "@/components/Button.vue";
+import Table from "@/components/Table.vue";
+import { indexPage } from "./../../lib/mixin";
+
+export default {
+  name: "PMA",
+  mixins: [indexPage],
+  components: {
+    "x-btn": Button,
+    "x-table": Table
+  },
+
+  data() {
+    return {
+      columns: ["Name", "PMA Code", "PMA ID", "District", "HHT", "HHP"]
+    };
+  }
+};
+</script>
+
+<style lang="scss" scoped>
+</style>

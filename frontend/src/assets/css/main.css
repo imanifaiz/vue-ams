@@ -1,0 +1,238 @@
+@tailwind base;
+
+a {
+  @apply font-bold text-blue-500 underline;
+}
+
+@tailwind components;
+
+/* .container {
+  @apply bg-white;
+} */
+
+.table {
+  @apply w-full mb-8;
+}
+
+.table th, .table td {
+  @apply px-4 py-2 border-b text-sm;
+}
+
+.table th {
+  @apply font-bold text-sm text-gray-700 text-left border-b-2 bg-gray-100;
+}
+
+.table .action-col {
+  width: 140px;
+}
+
+.table-info {
+  @apply border;
+}
+.table-info th, .table-info td {
+  @apply border;
+}
+.table-info th {
+  text-align: right;
+  min-width: 40px;
+}
+
+.table-info td {
+  width: auto;
+}
+
+.btn {
+  /* @apply px-6 py-2 bg-gray-400 inline-block font-bold rounded-sm no-underline text-gray-700; */
+  @apply inline-block font-semibold text-center cursor-pointer rounded-sm no-underline leading-6 bg-gray-400 text-gray-700 px-4 py-2;
+}
+
+.btn + .btn {
+  @apply ml-2;
+}
+
+.btn:hover {
+  @apply bg-gray-500;
+}
+
+.btn-primary {
+  @apply bg-blue-600 text-blue-100;
+}
+
+.btn-primary:hover {
+  @apply bg-blue-700;
+}
+
+.btn-error {
+  @apply bg-red-600 text-blue-100;
+}
+
+.btn-error:hover {
+  @apply bg-red-700;
+}
+
+.btn-sm {
+  @apply px-4 py-1 text-xs;
+}
+
+.btn-lg {
+  @apply px-6 py-4;
+}
+
+.pagination {
+  @apply pb-8 text-center;
+}
+.pagination a {
+  @apply text-sm px-4 py-2 bg-gray-300 border border-gray-400 font-bold text-gray-600 no-underline;
+}
+.pagination a.active {
+  @apply bg-gray-600 text-gray-100;
+}
+/* .pagination a:first-child {
+  @apply mr-8;
+} */
+
+.form-group {
+  @apply mb-4;
+}
+.form-label {
+  @apply flex justify-between font-bold mb-1 text-gray-700;
+}
+.form-input {
+  @apply p-2 rounded-sm text-sm w-full bg-gray-100 text-gray-700 shadow-inner;
+}
+.form-input:focus {
+  outline-style: dotted;
+  outline-width: 1px;
+  outline-offset: 1px;
+  outline-color: #4a5568;
+}
+.form-input[disabled] {
+  @apply bg-gray-300 cursor-not-allowed text-gray-600;
+}
+.form-error {
+  @apply bg-red-200;
+  outline-color: #fed7d7;
+}
+.form-error:focus {
+  outline-color: #fed7d7;
+}
+
+.info-group {
+  @apply mb-4;
+}
+.info-label {
+  @apply flex justify-between font-bold mb-1 text-gray-700;
+}
+
+.alert-container {
+  @apply fixed top-0 right-0 left-0 p-8 text-center m-auto;
+  max-width:500px;
+  z-index: 9000;
+}
+.alert-inner {
+  @apply text-center;
+}
+.alert-wrap {
+  /* @apply ; */
+}
+.alert-item {
+  @apply inline-block px-6 py-4 leading-6 rounded-md bg-white shadow-md;
+  min-width: 200px;
+  max-width: 450px;
+}
+.alert-content {
+  @apply flex justify-between items-center;
+}
+.alert-icon {
+  @apply pr-4;
+}
+.alert-text {
+  @apply mr-auto;
+}
+.alert-close {
+  @apply cursor-pointer text-gray-500 pl-4;
+}
+.alert-success {
+  @apply text-green-500;
+}
+.alert-info {
+  @apply text-blue-500;
+}
+.alert-warning {
+  @apply text-orange-500;
+}
+.alert-error {
+  @apply text-red-500;
+}
+
+.modal-backdrop {
+  @apply fixed top-0 right-0 left-0 bottom-0 overflow-auto p-4;
+  background-color: rgba(26, 32, 44 ,.7);
+  z-index: 8000;
+}
+.modal {
+  @apply mx-auto max-w-5xl mt-48 bg-white rounded-sm shadow-xl;
+  z-index: 8500;
+}
+.modal-header {
+  @apply flex justify-between items-center px-4 py-2 border-b;
+}
+.modal-title {
+  @apply font-bold text-gray-700 text-base;
+}
+.modal-close {
+  @apply cursor-pointer;
+}
+.modal-body {
+  @apply px-4 py-2;
+}
+.modal-footer {
+  @apply px-4 py-2 border-t;
+}
+.card {
+  @apply bg-white shadow-lg rounded-sm mb-8;
+}
+.card-header {
+  @apply flex justify-between items-center px-4 py-2 border-b;
+}
+.card-title {
+  @apply font-bold text-base text-gray-700
+}
+.card-body {
+  @apply px-4 py-2;
+}
+.card-footer {
+  @apply px-4 py-2 border-t;
+}
+
+.loading {
+  @apply fixed top-0 w-full h-full flex flex-col items-center justify-center text-white;
+  background-color: rgba(26, 32, 44 ,.7);
+  z-index: 10000;
+}
+.loading .icon {
+  @apply flex justify-center items-center;
+}
+.loading .fa {
+  @apply mb-4;
+  z-index: 10500;
+}
+.loading .fa.icon1 {
+  @apply mb-4;
+  animation: spin 1s infinite linear;
+}
+.loading .fa.icon2 {
+  @apply mb-4;
+  animation: -spin 1s infinite linear;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes -spin {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+@tailwind utilities;
