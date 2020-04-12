@@ -14,18 +14,18 @@ const routes = [
     name: "Districts",
     component: () => import("../views/District.vue"),
     meta: {
-      resource: "districts",
-    },
+      resource: "districts"
+    }
   },
-  
+
   // CRUD routes for HHT
   {
     path: "/hht",
     name: "Hht",
     component: () => import("../views/Hht/Index.vue"),
     meta: {
-      resource: 'hht'
-    },
+      resource: "hht"
+    }
   },
   {
     path: "/hht/create",
@@ -33,7 +33,7 @@ const routes = [
     component: () => import("../views/Hht/Form.vue"),
     meta: {
       resource: "hht"
-    },
+    }
   },
   {
     path: "/hht/:id/edit",
@@ -42,15 +42,15 @@ const routes = [
     meta: {
       resource: "hht",
       mode: "edit"
-    },
+    }
   },
   {
     path: "/hht/:id",
     name: "ShowHht",
     component: () => import("../views/Hht/Show.vue"),
     meta: {
-      resource: 'hht'
-    },
+      resource: "hht"
+    }
   },
 
   // CRUD routes for HHP
@@ -59,8 +59,8 @@ const routes = [
     name: "Hhp",
     component: () => import("../views/Hhp/Index.vue"),
     meta: {
-      resource: 'hhp'
-    },
+      resource: "hhp"
+    }
   },
   {
     path: "/hhp/create",
@@ -68,7 +68,7 @@ const routes = [
     component: () => import("../views/Hhp/Form.vue"),
     meta: {
       resource: "hhp"
-    },
+    }
   },
   {
     path: "/hhp/:id/edit",
@@ -77,15 +77,15 @@ const routes = [
     meta: {
       resource: "hhp",
       mode: "edit"
-    },
+    }
   },
   {
     path: "/hhp/:id",
     name: "ShowHhp",
     component: () => import("../views/Hhp/Show.vue"),
     meta: {
-      resource: 'hhp'
-    },
+      resource: "hhp"
+    }
   },
 
   // CRUD routes for Reports
@@ -94,8 +94,8 @@ const routes = [
     name: "Repair",
     component: () => import("../views/Repairs/Index.vue"),
     meta: {
-      resource: 'repairs'
-    },
+      resource: "repairs"
+    }
   },
   {
     path: "/repairs/create",
@@ -103,7 +103,7 @@ const routes = [
     component: () => import("../views/Repairs/Form.vue"),
     meta: {
       resource: "repairs"
-    },
+    }
   },
   {
     path: "/repairs/:id/edit",
@@ -112,15 +112,15 @@ const routes = [
     meta: {
       resource: "repairs",
       mode: "edit"
-    },
+    }
   },
   {
     path: "/repairs/:id",
     name: "ShowRepair",
     component: () => import("../views/Repairs/Show.vue"),
     meta: {
-      resource: 'repairs'
-    },
+      resource: "repairs"
+    }
   },
 
   // CRUD routes for PMA
@@ -129,8 +129,8 @@ const routes = [
     name: "Pma",
     component: () => import("../views/Pma/Index.vue"),
     meta: {
-      resource: 'pma'
-    },
+      resource: "pma"
+    }
   },
   {
     path: "/pma/create",
@@ -138,7 +138,7 @@ const routes = [
     component: () => import("../views/Pma/Form.vue"),
     meta: {
       resource: "pma"
-    },
+    }
   },
   {
     path: "/pma/:id/edit",
@@ -147,16 +147,16 @@ const routes = [
     meta: {
       resource: "pma",
       mode: "edit"
-    },
+    }
   },
   {
     path: "/pma/:id",
     name: "ShowPma",
     component: () => import("../views/Pma/Show.vue"),
     meta: {
-      resource: 'pma'
-    },
-  },
+      resource: "pma"
+    }
+  }
 ];
 
 const router = new VueRouter({

@@ -18,13 +18,13 @@
     </table>
 
     <div class="pagination" @show="prev_page !== null || next_page !== null">
-      <a 
-        href="#" 
-        v-for="i in pagination.last_page" 
+      <a
+        href="#"
+        v-for="i in pagination.last_page"
         v-show="pagination.last_page > 1"
-        :key="i" 
-        :class="{active: i == pagination.page}" 
-        @click.prevent="request(i)" 
+        :key="i"
+        :class="{ active: i == pagination.page }"
+        @click.prevent="request(i)"
       >
         {{ i }}
       </a>

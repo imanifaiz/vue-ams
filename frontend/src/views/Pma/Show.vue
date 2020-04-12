@@ -7,7 +7,10 @@
           <x-btn :to="`/${$route.meta.resource}`" class="btn-sm">
             <i class="fa fa-arrow-left"></i>
           </x-btn>
-          <x-btn :to="`/${$route.meta.resource}/${$route.params.id}/edit`" class="btn-sm">
+          <x-btn
+            :to="`/${$route.meta.resource}/${$route.params.id}/edit`"
+            class="btn-sm"
+          >
             Edit
             <i class="fa fa-edit ml-2"></i>
           </x-btn>
@@ -50,11 +53,11 @@
         <div class="grid grid-cols-3 gap-4 py-4">
           <div class="info-group">
             <label for class="info-label">HHT:</label>
-            <p>{{ model.hht ? model.hht.serial_no : '-' }}</p>
+            <p>{{ model.hht ? model.hht.serial_no : "-" }}</p>
           </div>
           <div class="info-group">
             <label for class="info-label">HHP:</label>
-            <p>{{ model.hhp ? model.hhp.serial_no : '-' }}</p>
+            <p>{{ model.hhp ? model.hhp.serial_no : "-" }}</p>
           </div>
         </div>
       </div>
@@ -104,7 +107,13 @@
       </div>
 
       <x-table
-        :columns="['Repaired At', 'Returned At', 'Reason', 'HHP/HHT', 'Serial No.']"
+        :columns="[
+          'Repaired At',
+          'Returned At',
+          'Reason',
+          'HHP/HHT',
+          'Serial No.'
+        ]"
         :rows="model.repairs"
         @onRequest="loadData"
         :pagination.sync="pagination"
@@ -120,8 +129,8 @@
         <template v-slot:body="{ rows }">
           <tbody>
             <tr v-for="(d, index) in rows" :key="index">
-              <td>{{ d.repaired_at || '-' }}</td>
-              <td>{{ d.returned_at || '-' }}</td>
+              <td>{{ d.repaired_at || "-" }}</td>
+              <td>{{ d.returned_at || "-" }}</td>
               <td>{{ d.reason }}</td>
               <td>{{ d.repairable.type }}</td>
               <td>{{ d.repairable.serial_no }}</td>
@@ -217,6 +226,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss" scoped>
-</style>

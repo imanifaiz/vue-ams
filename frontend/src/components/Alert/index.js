@@ -5,4 +5,4 @@ const alert = new Vue(AlertList).$mount();
 
 document.body.appendChild(alert.$el);
 
-export default alert
+export default alert;

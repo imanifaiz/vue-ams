@@ -1,7 +1,4 @@
-import {
-  _axios,
-  getURL
-} from "./lib";
+import { _axios, getURL } from "./lib";
 
 const indexPage = {
   data() {
@@ -18,23 +15,17 @@ const indexPage = {
     };
   },
   beforeRouteEnter(to, from, next) {
-    _axios.get(`${to.meta.resource}`)
-      .then(({
-        data
-      }) => {
-        next((vm) => {
-          vm.setData(data)
-        })
-      })
+    _axios.get(`${to.meta.resource}`).then(({ data }) => {
+      next(vm => {
+        vm.setData(data);
+      });
+    });
   },
   beforeRouteUpdate(to, from, next) {
-    _axios.get(`${to.meta.resource}`)
-      .then(({
-        data
-      }) => {
-        this.setData(data)
-        next()
-      })
+    _axios.get(`${to.meta.resource}`).then(({ data }) => {
+      this.setData(data);
+      next();
+    });
   },
   methods: {
     setData(data) {
@@ -55,23 +46,21 @@ const indexPage = {
             ...pagination
           }
         })
-        .then(({
-          data
-        }) => {
+        .then(({ data }) => {
           this.setData(data);
         })
         .catch(err => {
           console.log(err);
         });
-    },
+    }
   }
-}
+};
 
 const formPage = {
   data() {
     return {
       form: {},
-      errors: [],
+      errors: []
     };
   },
   computed: {
@@ -80,24 +69,18 @@ const formPage = {
     }
   },
   beforeRouteUpdate(to, from, next) {
-    _axios.get(getURL(to))
-      .then(({
-        data
-      }) => {
-        this.setData(data);
-        next();
-      })
+    _axios.get(getURL(to)).then(({ data }) => {
+      this.setData(data);
+      next();
+    });
   },
 
   beforeRouteEnter(to, from, next) {
-    _axios.get(getURL(to))
-      .then(({
-        data
-      }) => {
-        next(vm => {
-          vm.setData(data)
-        });
-      })
+    _axios.get(getURL(to)).then(({ data }) => {
+      next(vm => {
+        vm.setData(data);
+      });
+    });
   },
 
   methods: {
@@ -110,7 +93,7 @@ const formPage = {
         id = this.$route.params.id,
         url = `/${r}`;
 
-      if (this.mode === 'Edit') {
+      if (this.mode === "Edit") {
         url = `/${r}/${id}`;
       }
 
@@ -120,36 +103,25 @@ const formPage = {
     save() {
       this.$spinner.show();
 
-      const {
-        url,
-        method
-      } = this.getForm();
-
-      // let formData = new FormData;
-
-      // Object.keys(this.form).forEach(k => {
-      //   formData.set(k, this.form[k]);
-      // });
+      const { url, method } = this.getForm();
 
       this.$axios({
-          url: url,
-          method: method,
-          data: {
-            ...this.form
-          } //formData
-        })
-        .then(({
-          data
-        }) => {
-          this.$alert.success(method === "PUT" ? "Data saved." : "Data updated.");
+        url: url,
+        method: method,
+        data: {
+          ...this.form
+        }
+      })
+        .then(({ data }) => {
+          this.$alert.success(
+            method === "PUT" ? "Data saved." : "Data updated."
+          );
 
-          let id = (this.mode === 'Edit') ? this.$route.params.id : data.id;
+          let id = this.mode === "Edit" ? this.$route.params.id : data.id;
 
           this.$router.push(`/${this.redirect}/${id}`);
         })
-        .catch(({
-          response
-        }) => {
+        .catch(({ response }) => {
           if (response.status === 422) {
             this.errors = response.data;
           }
@@ -167,15 +139,9 @@ const formPage = {
         method = "PUT";
       }
 
-      return {
-        url,
-        method
-      }
+      return { url, method };
     }
   }
-}
+};
 
-export {
-  indexPage,
-  formPage
-}
+export { indexPage, formPage };

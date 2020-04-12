@@ -18,7 +18,7 @@
             type="text"
             class="form-input"
             v-model="form.name"
-            :class="{'form-error': errors['name']}"
+            :class="{ 'form-error': errors['name'] }"
           />
         </div>
         <div class="form-group">
@@ -29,7 +29,7 @@
             type="text"
             class="form-input"
             v-model="form.pma_code"
-            :class="{'form-error': errors['pma_code']}"
+            :class="{ 'form-error': errors['pma_code'] }"
           />
         </div>
         <div class="form-group">
@@ -40,7 +40,7 @@
             type="text"
             class="form-input"
             v-model="form.pma_id"
-            :class="{'form-error': errors['pma_id']}"
+            :class="{ 'form-error': errors['pma_id'] }"
           />
         </div>
       </div>
@@ -52,7 +52,7 @@
           </label>
           <x-select
             v-model="form.district"
-            :class="{'form-error': errors['district']}"
+            :class="{ 'form-error': errors['district'] }"
             placeholder="Select District..."
             :options="districtOpts"
             :filter-function="selectlistSearchFilter"
@@ -142,6 +142,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss" scoped>
-</style>

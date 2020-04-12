@@ -11,7 +11,7 @@ export default {
   data() {
     return {
       loading: false
-    }
+    };
   },
   methods: {
     show() {
@@ -21,5 +21,5 @@ export default {
       this.loading = false;
     }
   }
-}
+};
 </script>

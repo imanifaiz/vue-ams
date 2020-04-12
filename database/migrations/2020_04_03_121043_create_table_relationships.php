@@ -25,15 +25,15 @@ class CreateTableRelationships extends Migration
             $table->foreign('pma_id')->references('id')->on('pma');
         });
 
-        Schema::table('hhp_prev_pma', function (Blueprint $table) {
-            $table->foreign('hhp_id')->references('id')->on('hhp');
-            $table->foreign('pma_id')->references('id')->on('pma');
-        });
+        // Schema::table('hhp_prev_pma', function (Blueprint $table) {
+        //     $table->foreign('hhp_id')->references('id')->on('hhp');
+        //     $table->foreign('pma_id')->references('id')->on('pma');
+        // });
 
-        Schema::table('hht_prev_pma', function (Blueprint $table) {
-            $table->foreign('hht_id')->references('id')->on('hht');
-            $table->foreign('pma_id')->references('id')->on('pma');
-        });
+        // Schema::table('hht_prev_pma', function (Blueprint $table) {
+        //     $table->foreign('hht_id')->references('id')->on('hht');
+        //     $table->foreign('pma_id')->references('id')->on('pma');
+        // });
     }
 
     /**
@@ -47,15 +47,15 @@ class CreateTableRelationships extends Migration
             $table->dropForeign('district_id');
         });
 
-        Schema::table('hhp_prev_pma', function (Blueprint $table) {
-            $table->dropForeign('hhp_id');
-            $table->dropForeign('pma_id');
-        });
+        // Schema::table('hhp_prev_pma', function (Blueprint $table) {
+        //     $table->dropForeign('hhp_id');
+        //     $table->dropForeign('pma_id');
+        // });
 
-        Schema::table('hht_prev_pma', function (Blueprint $table) {
-            $table->dropForeign('hht_id');
-            $table->dropForeign('pma_id');
-        });
+        // Schema::table('hht_prev_pma', function (Blueprint $table) {
+        //     $table->dropForeign('hht_id');
+        //     $table->dropForeign('pma_id');
+        // });
 
         Schema::table('hht', function (Blueprint $table) {
             $table->dropForeign('pma_id');

@@ -2,7 +2,9 @@
   <div class="card">
     <div class="card-header">
       <h1 class="card-title">Districts</h1>
-      <x-btn class="btn-sm btn-icon" @click="add()">Add District<i class="fa fa-plus ml-1"></i></x-btn>
+      <x-btn class="btn-sm btn-icon" @click="add()">
+        Add District<i class="fa fa-plus ml-1"></i>
+      </x-btn>
     </div>
 
     <x-table
@@ -16,14 +18,16 @@
           <tr v-for="(d, index) in rows" :key="index">
             <td>{{ d.name }}</td>
             <td class="action-col">
-              <x-btn class="btn-sm btn-icon" @click="edit(d)"><i class="fa fa-pencil-alt"></i></x-btn>
+              <x-btn class="btn-sm btn-icon" @click="edit(d)">
+                <i class="fa fa-pencil-alt"></i>
+              </x-btn>
 
-              <x-delete-btn 
-                class="btn-error btn-sm" 
-                :resource="$route.meta.resource" 
-                :data-id="d.id" 
+              <x-delete-btn
+                class="btn-error btn-sm"
+                :resource="$route.meta.resource"
+                :data-id="d.id"
                 message="Deleting this record cannot be undone."
-                @onDeleted="loadData()" 
+                @onDeleted="loadData()"
               >
                 <i class="fa fa-trash"></i>
               </x-delete-btn>
@@ -33,15 +37,15 @@
       </template>
     </x-table>
 
-    <x-form-modal 
-      title="Edit" 
+    <x-form-modal
+      title="Edit"
       :modal-class="['w-1/3']"
-      :form="form" 
-      :show.sync="show" 
-      :onSubmit="submit" 
+      :form="form"
+      :show.sync="show"
+      :onSubmit="submit"
       @onShow="focusInput()"
-      @onSuccess="onSuccess()" 
-      @onError="onError()" 
+      @onSuccess="onSuccess()"
+      @onError="onError()"
       @onClose="closeModal()"
     >
       <template v-slot:default="{ form, errors }">
@@ -49,7 +53,13 @@
           <label for="" class="form-label">
             <span>Name:</span>
           </label>
-          <input type="text" class="form-input" :class="{'form-error': errors['name']}" v-model="form.name" ref="input">
+          <input
+            type="text"
+            class="form-input"
+            :class="{ 'form-error': errors['name'] }"
+            v-model="form.name"
+            ref="input"
+          />
         </div>
       </template>
     </x-form-modal>
@@ -57,7 +67,6 @@
 </template>
 
 <script>
-// @ is an alias to /src
 import XTable from "@/components/Table.vue";
 import XBtn from "@/components/Button.vue";
 import XDeleteBtn from "@/components/ConfirmDeleteButton.vue";
@@ -77,7 +86,7 @@ export default {
       columns: ["Name", "Action"],
       data: [],
       show: false,
-      form: { id: '', name: '' },
+      form: { id: "", name: "" },
       errors: [],
       pagination: {
         sortBy: "desc",
@@ -87,11 +96,11 @@ export default {
         per_page: 3,
         total: 10
       }
-    }
+    };
   },
 
   mounted() {
-    this.loadData()
+    this.loadData();
   },
 
   computed: {
@@ -104,7 +113,8 @@ export default {
     loadData() {
       const pagination = this.pagination;
 
-      this.$axios.get('districts', { params: { ...pagination } })
+      this.$axios
+        .get("districts", { params: { ...pagination } })
         .then(({ data }) => {
           this.data = data.data;
           this.pagination.page = data.current_page;
@@ -113,8 +123,8 @@ export default {
           this.pagination.total = data.total;
         })
         .catch(err => {
-          console.log(err)
-        })
+          console.log(err);
+        });
     },
     add() {
       this.show = true;
@@ -132,7 +142,7 @@ export default {
     },
     submit() {
       let url = this.form.id ? `districts/${this.form.id}` : "districts";
-      
+
       this.$spinner.show();
 
       return this.$axios({
@@ -145,10 +155,12 @@ export default {
     onSuccess(response) {
       this.loadData();
 
-      this.$alert.success(this.method === "PUT" ? "Data saved." : "Data updated.");
+      this.$alert.success(
+        this.method === "PUT" ? "Data saved." : "Data updated."
+      );
     },
     onError(error) {
-      console.log(error)
+      console.log(error);
     },
     closeModal() {
       this.show = false;
@@ -159,6 +171,6 @@ export default {
 
 <style lang="scss" scoped>
 .table th:last-child {
-  width: 80px
+  width: 80px;
 }
 </style>

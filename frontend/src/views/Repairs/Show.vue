@@ -6,7 +6,10 @@
         <x-btn :to="`/${$route.meta.resource}`" class="btn-sm">
           <i class="fa fa-arrow-left"></i>
         </x-btn>
-        <x-btn :to="`/${$route.meta.resource}/${$route.params.id}/edit`" class="btn-sm">
+        <x-btn
+          :to="`/${$route.meta.resource}/${$route.params.id}/edit`"
+          class="btn-sm"
+        >
           Edit
           <i class="fa fa-edit ml-2"></i>
         </x-btn>
@@ -66,22 +69,22 @@
       <div class="grid grid-cols-3 gap-4 border-b py-4">
         <div class="info-group">
           <label for class="info-label">Reported At:</label>
-          <p>{{ model.reported_at || '-' }}</p>
+          <p>{{ model.reported_at || "-" }}</p>
         </div>
         <div class="info-group">
           <label for class="info-label">Reparied At:</label>
-          <p>{{ model.repaired_at || '-' }}</p>
+          <p>{{ model.repaired_at || "-" }}</p>
         </div>
         <div class="info-group">
           <label for class="info-label">Returned At:</label>
-          <p>{{ model.returned_at || '-' }}</p>
+          <p>{{ model.returned_at || "-" }}</p>
         </div>
       </div>
 
       <div class="py-4">
         <div class="info-group">
           <label for class="info-label">Remarks:</label>
-          <p>{{ model.remark || '-' }}</p>
+          <p>{{ model.remark || "-" }}</p>
         </div>
       </div>
     </div>
@@ -89,8 +92,6 @@
 </template>
 
 <script>
-// @ is an alias to /src
-// import Vue from "vue";
 import { _axios } from "./../../lib/lib";
 import XBtn from "@/components/Button";
 import XDeleteBtn from "@/components/ConfirmDeleteButton.vue";
@@ -148,11 +149,6 @@ export default {
         .get(`${this.$route.meta.resource}/${this.$route.params.id}`)
         .then(({ data }) => {
           this.setData(data);
-
-          // this.pagination.page = data.current_page;
-          // this.pagination.last_page = data.last_page;
-          // this.pagination.per_page = data.per_page;
-          // this.paginatino.total = data.total;
         })
         .catch(err => {
           console.log(err);
@@ -167,6 +163,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss" scoped>
-</style>

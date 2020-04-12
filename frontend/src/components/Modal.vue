@@ -5,7 +5,9 @@
         <div class="modal-header">
           <slot name="header">
             <h4 class="modal-title">{{ title }}</h4>
-            <span @click="dismiss()" class="modal-close"><i class="fa fa-times"></i></span>
+            <span @click="dismiss()" class="modal-close">
+              <i class="fa fa-times"></i>
+            </span>
           </slot>
         </div>
 
@@ -25,7 +27,7 @@ export default {
   props: ["show", "title", "modalClass"],
   methods: {
     dismiss() {
-      this.$emit("close")
+      this.$emit("close");
     }
   },
   watch: {
@@ -45,16 +47,12 @@ export default {
       if (e.key === "Escape" && this.show) {
         this.dismiss();
       }
-    }
+    };
 
     document.addEventListener("keydown", escHandler);
     this.$once("hook:destroyed", () => {
       document.removeEventListener("keydown", escHandler);
     });
   }
-}
+};
 </script>
-
-<style>
-
-</style>

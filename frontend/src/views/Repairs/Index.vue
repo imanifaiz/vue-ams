@@ -2,7 +2,9 @@
   <div class="card">
     <div class="card-header">
       <h1 class="card-title">Repair Logs</h1>
-      <x-btn class="btn-sm btn-icon" :to="`/${$route.meta.resource}/create`">Add Repair Log<i class="fa fa-plus ml-1"></i></x-btn>
+      <x-btn class="btn-sm btn-icon" :to="`/${$route.meta.resource}/create`">
+        Add Repair Log<i class="fa fa-plus ml-1"></i>
+      </x-btn>
     </div>
 
     <x-table
@@ -23,7 +25,9 @@
         <tbody>
           <tr v-for="(d, index) in rows" :key="index">
             <td>
-              <router-link :to="`/${$route.meta.resource}/${d.id}`">{{ d.repairable.serial_no }}</router-link>
+              <router-link :to="`/${$route.meta.resource}/${d.id}`">
+                {{ d.repairable.serial_no }}
+              </router-link>
             </td>
             <td>{{ d.repairable.type }}</td>
             <td>{{ d.pma.name }}</td>
@@ -53,12 +57,8 @@ export default {
 
   data() {
     return {
-      columns: ["Serial No", "Type", "PMA", "Reason", "Reported At", "Status"],
+      columns: ["Serial No", "Type", "PMA", "Reason", "Reported At", "Status"]
     };
-  },
+  }
 };
 </script>
-
-<style lang="scss" scoped>
-
-</style>

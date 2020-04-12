@@ -6,7 +6,9 @@
           <i :class="['fa', `fa-${iconClass}`]"></i>
         </div>
         <div class="alert-text">{{ alert.text }}</div>
-        <div class="alert-close" @click="close"><i class="fa fa-times"></i></div>
+        <div class="alert-close" @click="close">
+          <i class="fa fa-times"></i>
+        </div>
         <!-- <div class="alert-close" @click="close" v-if="alert.duration === 0"><i class="fa fa-times"></i></div> -->
       </div>
     </div>
@@ -24,22 +26,22 @@ export default {
   data() {
     return {
       icon: "info-circle"
-    }
+    };
   },
   computed: {
     iconClass() {
       const iconClass = {
-        "success": "check-circle",
-        "error": "times-circle",
-        "warning": "exclamation-triangle",
-        "info": "info-circle"
-      }
+        success: "check-circle",
+        error: "times-circle",
+        warning: "exclamation-triangle",
+        info: "info-circle"
+      };
 
       return iconClass[this.alert.type] || this.icon;
     }
   },
   mounted() {
-    this.startTimer()
+    this.startTimer();
   },
   methods: {
     startTimer() {
@@ -53,5 +55,5 @@ export default {
       this.$emit("close", this.alert.id);
     }
   }
-}
+};
 </script>

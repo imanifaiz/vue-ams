@@ -2,7 +2,9 @@
   <div class="card">
     <div class="card-header">
       <h1 class="card-title">HHT</h1>
-      <x-btn class="btn-sm btn-icon" :to="`/${$route.meta.resource}/create`">Add HHT<i class="fa fa-plus ml-1"></i></x-btn>
+      <x-btn class="btn-sm btn-icon" :to="`/${$route.meta.resource}/create`">
+        Add HHT<i class="fa fa-plus ml-1"></i>
+      </x-btn>
     </div>
 
     <x-table
@@ -23,11 +25,13 @@
         <tbody>
           <tr v-for="(d, index) in rows" :key="index">
             <td>
-              <router-link :to="`/${$route.meta.resource}/${d.id}`">{{ d.serial_no || '-' }}</router-link>
+              <router-link :to="`/${$route.meta.resource}/${d.id}`">
+                {{ d.serial_no || "-" }}
+              </router-link>
             </td>
-            <td>{{ d.pma ? d.pma.hhp.serial_no : '-' }}</td>
-            <td>{{ d.pma ? d.pma.name : '-' }}</td>
-            <td>{{ d.pma ? d.pma.district.name : '-' }}</td>
+            <td>{{ d.pma ? d.pma.hhp.serial_no : "-" }}</td>
+            <td>{{ d.pma ? d.pma.name : "-" }}</td>
+            <td>{{ d.pma ? d.pma.district.name : "-" }}</td>
           </tr>
         </tbody>
       </template>
@@ -51,12 +55,8 @@ export default {
 
   data() {
     return {
-      columns: ["Serial No", "HHP", "PMA", "District"],
+      columns: ["Serial No", "HHP", "PMA", "District"]
     };
-  },
+  }
 };
 </script>
-
-<style lang="scss" scoped>
-
-</style>

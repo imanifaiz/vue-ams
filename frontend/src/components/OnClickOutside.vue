@@ -8,16 +8,16 @@ export default {
         return;
       }
 
-      this.do()
-    }
+      this.do();
+    };
 
     document.body.addEventListener("click", listener);
     this.$once("hook:beforeDestroy", () => {
       document.body.removeEventListener("click", listener);
-    })
+    });
   },
   render() {
     return this.$slots.default[0];
   }
-}
+};
 </script>

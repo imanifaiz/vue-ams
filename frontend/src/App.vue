@@ -6,7 +6,11 @@
     >
       <div class="container flex items-center m-auto">
         <div class="flex items-center">
-          <a href="/" title="Livewire home" class="items-center inline-flex no-underline">
+          <a
+            href="/"
+            title="Livewire home"
+            class="items-center inline-flex no-underline"
+          >
             <img
               src="./assets/transformer.svg"
               style="width:auto;height:36px"
@@ -66,36 +70,29 @@
       </div>
     </header>
 
-    <!-- <div class="bg-gray-700 w-full p-24"></div> -->
-
-    <transition enter-active-class="animated fadeIn faster" leave-active-class="animated fadeOut faster" :duration="150" mode="out-in">
+    <transition
+      enter-active-class="animated fadeIn"
+      leave-active-class="animated fadeOut"
+      :duration="150"
+      mode="out-in"
+    >
       <router-view class="container m-auto" :key="$route.path" />
     </transition>
 
-    <!-- <x-modal :show="show" @close="show=false">
-      <h4>Hello World!!</h4>
-    </x-modal> -->
-
-      <!-- <a href="#" @click="$alert.info('Hello World')">Add</a> -->
-
-      <portal-target name="modals"></portal-target>
+    <portal-target name="modals"></portal-target>
   </div>
 </template>
 
 <script>
-// import XModal from "@/components/Modal.vue";
-
 export default {
   name: "App",
-  // components: { XModal },
   data() {
     return {
-      show: true,
-      messages: ['hello', 'world', 'all']
-    }
+      show: true
+    };
   },
   mounted() {
-    this.$alert.info("Welcome, John!")
+    this.$alert.info("Welcome, John!");
   }
-}
+};
 </script>

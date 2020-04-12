@@ -2,7 +2,13 @@
   <x-btn class="btn-error btn-sm" @click="show = true">
     <slot></slot>
 
-    <x-confirm-delete-modal :show="show" @onClose="show = false" @onDelete="onDelete" :message="message" :modal-class="['w-1/3']">
+    <x-confirm-delete-modal
+      :show="show"
+      @onClose="show = false"
+      @onDelete="onDelete"
+      :message="message"
+      :modal-class="['w-1/3']"
+    >
       {{ message }}
     </x-confirm-delete-modal>
   </x-btn>
@@ -19,11 +25,12 @@ export default {
   data() {
     return {
       show: false
-    }
+    };
   },
   methods: {
     onDelete() {
-      this.$axios.delete(`${this.resource}/${this.dataId}`)
+      this.$axios
+        .delete(`${this.resource}/${this.dataId}`)
         .then(({ data }) => {
           this.$alert.success(data.message);
           this.$emit("onDeleted");
@@ -31,9 +38,9 @@ export default {
         .catch(error => {
           console.log(error);
         });
-      
-        this.show = false;
+
+      this.show = false;
     }
   }
-}
+};
 </script>

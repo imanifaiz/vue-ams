@@ -1,7 +1,12 @@
 <template>
   <on-click-outside :do="close">
     <div class="search-select" :class="{ 'is-active': isOpen }">
-      <button class="search-select-input form-input" ref="button" @click="open" type="button">
+      <button
+        class="search-select-input form-input"
+        ref="button"
+        @click="open"
+        type="button"
+      >
         <span v-if="value">{{ value | label }}</span>
         <span v-else class="search-select-placeholder">{{ placeholder }}</span>
       </button>
@@ -13,17 +18,25 @@
           ref="search"
           @keydown.esc="close"
           @keydown.tab.prevent
+        />
+        <ul
+          ref="options"
+          v-show="filteredOptions.length > 0"
+          class="search-select-options"
         >
-        <ul ref="options" v-show="filteredOptions.length > 0" class="search-select-options">
           <li
             class="search-select-option"
-            v-for="(option, i)  in filteredOptions"
+            v-for="(option, i) in filteredOptions"
             :key="i"
             :class="{ 'is-active': value === option }"
             @click="select(option)"
-          >{{ option | label }}</li>
+          >
+            {{ option | label }}
+          </li>
         </ul>
-        <div v-show="filteredOptions.length === 0" class="search-select-empty">No results found</div>
+        <div v-show="filteredOptions.length === 0" class="search-select-empty">
+          No results found
+        </div>
       </div>
     </div>
   </on-click-outside>
@@ -42,7 +55,7 @@ export default {
   data() {
     return {
       isOpen: false,
-      search: "",
+      search: ""
     };
   },
   beforeDestroy() {
@@ -57,7 +70,7 @@ export default {
   },
   filters: {
     label(value) {
-      return value instanceof(Object) ? value.label : value
+      return value instanceof Object ? value.label : value;
     }
   },
   methods: {
@@ -120,12 +133,12 @@ export default {
   user-select: none;
 }
 .search-select.form-error {
-    background-color: transparent !important;
-    outline-color: none !important;
+  background-color: transparent !important;
+  outline-color: none !important;
 }
 .form-error .search-select-input {
-    background-color: #fed7d7;
-    outline-color: #fed7d7;
+  background-color: #fed7d7;
+  outline-color: #fed7d7;
 }
 .search-select-input:focus {
   outline: 0;

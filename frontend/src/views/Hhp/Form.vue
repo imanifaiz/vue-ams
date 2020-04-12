@@ -14,23 +14,23 @@
           <label for="" class="form-label">
             <span>Serial No:</span>
           </label>
-          <input 
-            type="text" 
-            class="form-input" 
+          <input
+            type="text"
+            class="form-input"
             v-model="form.serial_no"
-            :class="{'form-error': errors['serial_no']}"
-          >
+            :class="{ 'form-error': errors['serial_no'] }"
+          />
         </div>
         <div class="form-group">
           <label for="" class="form-label">
             <span>Status:</span>
           </label>
-          <input 
-            type="text" 
-            class="form-input" 
+          <input
+            type="text"
+            class="form-input"
             v-model="form.status"
-            :class="{'form-error': errors['status']}"
-          >
+            :class="{ 'form-error': errors['status'] }"
+          />
         </div>
       </div>
 
@@ -39,35 +39,35 @@
           <label for="" class="form-label">
             <span>PMA:</span>
           </label>
-          <x-select 
-            v-model="form.pma" 
-            :class="{'form-error': errors['pma']}"
-            placeholder="Select PMA..." 
-            :options="pmaOpts" 
-            :filter-function="selectlistSearchFilter" 
-           />
+          <x-select
+            v-model="form.pma"
+            :class="{ 'form-error': errors['pma'] }"
+            placeholder="Select PMA..."
+            :options="pmaOpts"
+            :filter-function="selectlistSearchFilter"
+          />
         </div>
         <div class="form-group">
           <label for="" class="form-label">
             <span>PMA Code:</span>
           </label>
-          <input 
-            type="text" 
-            class="form-input" 
+          <input
+            type="text"
+            class="form-input"
             disabled="disabled"
             v-model="form.pma_code"
-          >
+          />
         </div>
         <div class="form-group">
           <label for="" class="form-label">
             <span>District:</span>
           </label>
-          <input 
-            type="text" 
-            class="form-input" 
+          <input
+            type="text"
+            class="form-input"
             disabled="disabled"
             v-model="form.district"
-          >
+          />
         </div>
       </div>
     </div>
@@ -88,11 +88,11 @@ export default {
     return {
       title: "HHP",
       pmaOpts: [],
-      redirect: 'hhp'
+      redirect: "hhp"
     };
   },
 
-  mixins: [ formPage ],
+  mixins: [formPage],
 
   mounted() {
     this.loadPmaOpts();
@@ -100,24 +100,17 @@ export default {
 
   methods: {
     selectlistSearchFilter(search, options) {
-      
       return options.filter(option => {
         let label = option instanceof Object ? option.label : option;
 
-        return label.toLowerCase().indexOf(search.toLowerCase()) > -1
+        return label.toLowerCase().indexOf(search.toLowerCase()) > -1;
       });
     },
     loadPmaOpts() {
-      this.$axios
-        .get('pma-selectlist-opts')
-        .then(({ data }) => {
-          this.pmaOpts = data;
-        });
-    },
+      this.$axios.get("pma-selectlist-opts").then(({ data }) => {
+        this.pmaOpts = data;
+      });
+    }
   }
 };
 </script>
-
-<style lang="scss" scoped>
-
-</style>

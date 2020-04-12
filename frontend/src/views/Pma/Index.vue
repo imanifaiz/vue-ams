@@ -8,7 +8,12 @@
       </x-btn>
     </div>
 
-    <x-table :columns="columns" :rows="data" @onRequest="loadData" :pagination.sync="pagination">
+    <x-table
+      :columns="columns"
+      :rows="data"
+      @onRequest="loadData"
+      :pagination.sync="pagination"
+    >
       <template v-slot:header="{ columns }">
         <thead>
           <tr>
@@ -21,13 +26,15 @@
         <tbody>
           <tr v-for="(d, index) in rows" :key="index">
             <td>
-              <router-link :to="`/${$route.meta.resource}/${d.id}`">{{ d.name }}</router-link>
+              <router-link :to="`/${$route.meta.resource}/${d.id}`">
+                {{ d.name }}
+              </router-link>
             </td>
             <td>{{ d.pma_code }}</td>
             <td>{{ d.pma_id }}</td>
-            <td>{{ d.district ? d.district.name : '-' }}</td>
-            <td>{{ d.hht ? d.hht.serial_no : '-' }}</td>
-            <td>{{ d.hhp ? d.hhp.serial_no : '-' }}</td>
+            <td>{{ d.district ? d.district.name : "-" }}</td>
+            <td>{{ d.hht ? d.hht.serial_no : "-" }}</td>
+            <td>{{ d.hhp ? d.hhp.serial_no : "-" }}</td>
           </tr>
         </tbody>
       </template>
@@ -36,7 +43,6 @@
 </template>
 
 <script>
-// @ is an alias to /src
 import Button from "@/components/Button.vue";
 import Table from "@/components/Table.vue";
 import { indexPage } from "./../../lib/mixin";
@@ -56,6 +62,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss" scoped>
-</style>

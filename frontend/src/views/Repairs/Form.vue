@@ -17,7 +17,7 @@
           <x-select
             ref="dtype"
             v-model="form.device_type"
-            :class="{'form-error': errors['device']}"
+            :class="{ 'form-error': errors['device'] }"
             placeholder="Select Device..."
             :options="['HHP', 'HHT']"
             :filter-function="selectlistSearchFilter"
@@ -30,7 +30,7 @@
           </label>
           <x-select
             v-model="form.device"
-            :class="{'form-error': errors['device']}"
+            :class="{ 'form-error': errors['device'] }"
             placeholder="Select Device..."
             :options="deviceOpts"
             :filter-function="selectlistSearchFilter"
@@ -44,7 +44,7 @@
             type="text"
             class="form-input"
             v-model="form.status"
-            :class="{'form-error': errors['status']}"
+            :class="{ 'form-error': errors['status'] }"
           />
         </div>
       </div>
@@ -56,7 +56,7 @@
           </label>
           <x-select
             v-model="form.pma"
-            :class="{'form-error': errors['pma']}"
+            :class="{ 'form-error': errors['pma'] }"
             placeholder="Select PMA..."
             :options="pmaOpts"
             :filter-function="selectlistSearchFilter"
@@ -72,7 +72,7 @@
             class="form-input"
             disabled="disabled"
             v-model="form.pma_code"
-            :class="{'form-error': errors['name']}"
+            :class="{ 'form-error': errors['name'] }"
           />
         </div>
         <div class="form-group">
@@ -84,7 +84,7 @@
             class="form-input"
             disabled="disabled"
             v-model="form.pma_id"
-            :class="{'form-error': errors['name']}"
+            :class="{ 'form-error': errors['name'] }"
           />
         </div>
       </div>
@@ -98,7 +98,7 @@
             class="form-input"
             v-model="form.reason"
             rows="5"
-            :class="{'form-error': errors['reason']}"
+            :class="{ 'form-error': errors['reason'] }"
           ></textarea>
         </div>
       </div>
@@ -112,7 +112,7 @@
             type="date"
             class="form-input"
             v-model="form.reported_at"
-            :class="{'form-error': errors['reported_at']}"
+            :class="{ 'form-error': errors['reported_at'] }"
           />
         </div>
         <div class="form-group">
@@ -123,7 +123,7 @@
             type="date"
             class="form-input"
             v-model="form.repaired_at"
-            :class="{'form-error': errors['repaired_at']}"
+            :class="{ 'form-error': errors['repaired_at'] }"
           />
         </div>
         <div class="form-group">
@@ -134,7 +134,7 @@
             type="date"
             class="form-input"
             v-model="form.returned_at"
-            :class="{'form-error': errors['returned_at']}"
+            :class="{ 'form-error': errors['returned_at'] }"
           />
         </div>
       </div>
@@ -144,7 +144,11 @@
           <label for class="form-label">
             <span>Remarks:</span>
           </label>
-          <textarea class="form-input" rows="5" v-model="form.remarks"></textarea>
+          <textarea
+            class="form-input"
+            rows="5"
+            v-model="form.remarks"
+          ></textarea>
         </div>
       </div>
 
@@ -234,6 +238,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss" scoped>
-</style>

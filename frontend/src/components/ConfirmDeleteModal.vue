@@ -1,5 +1,10 @@
 <template>
-  <x-modal :show="show" @close="closeModal()" title="Are you sure?" :modal-class="['w-1/3']">
+  <x-modal
+    :show="show"
+    @close="closeModal()"
+    title="Are you sure?"
+    :modal-class="['w-1/3']"
+  >
     <slot></slot>
 
     <div slot="footer" class="modal-footer flex justify-center">
@@ -25,5 +30,5 @@ export default {
       this.$emit("onDelete");
     }
   }
-}
+};
 </script>

@@ -3,41 +3,37 @@ import Spinner from "../components/Spinner";
 import Alert from "../components/Alert";
 
 const _axios = axios.create({
-  baseURL: "http://localhost:8000/api/v1/",
-  // headers: { "Content-Type": "application/x-www-form-urlencoded" }
-  //   post: {
-  //     "Content-Type": "application/x-www-form-urlencoded" 
-  //   },
-  //   put: {
-  //     "Content-Type": "application/x-www-form-urlencoded" 
-  //   }
-  // }
+  baseURL: "http://localhost:8000/api/v1/"
 });
 
-_axios.interceptors.response.use(response => {
-  Spinner.hide();
+_axios.interceptors.response.use(
+  response => {
+    Spinner.hide();
 
-  return response;
-}, (err) => {
-  Spinner.hide();
+    return response;
+  },
+  err => {
+    Spinner.hide();
 
-  if (err.response.status === 500 || err.response.status === 404 || err.response.status === 422) {
-    Alert.error(`ERROR ${err.response.status}: ${err.response.statusText}`)
+    if (
+      err.response.status === 500 ||
+      err.response.status === 404 ||
+      err.response.status === 422
+    ) {
+      Alert.error(`ERROR ${err.response.status}: ${err.response.statusText}`);
+    }
+
+    return Promise.reject(err);
   }
+);
 
-  return Promise.reject(err);
-});
-
-const getURL = (to) => {
+const getURL = to => {
   let urls = {
-    "create" : `${to.meta.resource}/create`,
-    "edit" : `${to.meta.resource}/${to.params.id}/edit`,
-  }
+    create: `${to.meta.resource}/create`,
+    edit: `${to.meta.resource}/${to.params.id}/edit`
+  };
 
-  return (urls[to.meta.mode] || urls["create"]);
-}
+  return urls[to.meta.mode] || urls["create"];
+};
 
-export {
-  _axios,
-  getURL
-}
+export { _axios, getURL };

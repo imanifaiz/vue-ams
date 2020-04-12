@@ -1,5 +1,10 @@
 <template>
-  <x-modal :show="show" @close="closeModal()" title="Edit" :modal-class="['w-1/3']">
+  <x-modal
+    :show="show"
+    @close="closeModal()"
+    title="Edit"
+    :modal-class="['w-1/3']"
+  >
     <slot :form="form" :errors="errors"></slot>
 
     <div slot="footer" class="modal-footer flex justify-center">
@@ -19,7 +24,7 @@ export default {
   data() {
     return {
       errors: []
-    }
+    };
   },
   components: { XModal, XBtn },
   watch: {
@@ -49,7 +54,7 @@ export default {
 
           this.closeModal();
         })
-        .catch(({response}) => {
+        .catch(({ response }) => {
           if (response.status === 422) {
             this.$emit("onError", response.data);
             this.errors = response.data;
@@ -63,5 +68,5 @@ export default {
       this.errors = [];
     }
   }
-}
+};
 </script>

@@ -2,12 +2,15 @@
   <div>
     <div class="card">
       <div class="card-header">
-        <h1 class="card-title">Serial No: {{ model.serial_no || '-' }}</h1>
+        <h1 class="card-title">Serial No: {{ model.serial_no || "-" }}</h1>
         <div>
           <x-btn :to="`/${$route.meta.resource}`" class="btn-sm">
             <i class="fa fa-arrow-left"></i>
           </x-btn>
-          <x-btn :to="`/${$route.meta.resource}/${$route.params.id}/edit`" class="btn-sm">
+          <x-btn
+            :to="`/${$route.meta.resource}/${$route.params.id}/edit`"
+            class="btn-sm"
+          >
             Edit
             <i class="fa fa-edit ml-2"></i>
           </x-btn>
@@ -28,22 +31,22 @@
         <div class="grid grid-cols-3 gap-4 border-b py-4">
           <div class="info-group">
             <label for class="info-label">PMA Name:</label>
-            <p>{{ model.pma ? model.pma.name : '-' }}</p>
+            <p>{{ model.pma ? model.pma.name : "-" }}</p>
           </div>
           <div class="info-group">
             <label for class="info-label">PMA Code:</label>
-            <p>{{ model.pma ? model.pma.pma_code : '-' }}</p>
+            <p>{{ model.pma ? model.pma.pma_code : "-" }}</p>
           </div>
           <div class="info-group">
             <label for class="info-label">PMA ID:</label>
-            <p>{{ model.pma ? model.pma.pma_id : '-' }}</p>
+            <p>{{ model.pma ? model.pma.pma_id : "-" }}</p>
           </div>
         </div>
 
         <div class="grid grid-cols-3 gap-4 py-4">
           <div class="info-group">
             <label for class="info-label">District:</label>
-            <p>{{ model.pma ? model.pma.district.name : '-' }}</p>
+            <p>{{ model.pma ? model.pma.district.name : "-" }}</p>
           </div>
         </div>
       </div>
@@ -109,8 +112,8 @@
         <template v-slot:body="{ rows }">
           <tbody>
             <tr v-for="(d, index) in rows" :key="index">
-              <td>{{ d.repaired_at || '-' }}</td>
-              <td>{{ d.returned_at || '-' }}</td>
+              <td>{{ d.repaired_at || "-" }}</td>
+              <td>{{ d.returned_at || "-" }}</td>
               <td>{{ d.reason }}</td>
               <td>{{ d.pma.name }}</td>
               <td>{{ d.pma.district.name }}</td>
@@ -179,17 +182,10 @@ export default {
       this.$set(this.$data, "model", data.data);
     },
     loadData() {
-      // const pagination = this.pagination;
-
       this.$axios
         .get(`${this.$route.meta.resource}/${this.$route.params.id}`)
         .then(({ data }) => {
           this.setData(data);
-
-          // this.pagination.page = data.current_page;
-          // this.pagination.last_page = data.last_page;
-          // this.pagination.per_page = data.per_page;
-          // this.paginatino.total = data.total;
         })
         .catch(err => {
           console.log(err);
@@ -204,6 +200,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss" scoped>
-</style>
