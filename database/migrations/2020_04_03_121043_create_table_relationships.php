@@ -44,25 +44,25 @@ class CreateTableRelationships extends Migration
     public function down()
     {
         Schema::table('pma', function (Blueprint $table) {
-            $table->dropForeign('district_id');
+            $table->dropForeign('pma_district_id_foreign');
         });
 
         // Schema::table('hhp_prev_pma', function (Blueprint $table) {
-        //     $table->dropForeign('hhp_id');
-        //     $table->dropForeign('pma_id');
+        //     $table->dropForeign('hhp_id_foreign');
+        //     $table->dropForeign('pma_id_foreign');
         // });
 
         // Schema::table('hht_prev_pma', function (Blueprint $table) {
-        //     $table->dropForeign('hht_id');
-        //     $table->dropForeign('pma_id');
+        //     $table->dropForeign('hht_id_foreign');
+        //     $table->dropForeign('pma_id_foreign');
         // });
 
         Schema::table('hht', function (Blueprint $table) {
-            $table->dropForeign('pma_id');
+            $table->dropForeign('hht_pma_id_foreign');
         });
 
         Schema::table('hhp', function (Blueprint $table) {
-            $table->dropForeign('pma_id');
+            $table->dropForeign('hhp_pma_id_foreign');
         });
     }
 }

@@ -13,20 +13,10 @@ class CreateTableHistories extends Migration
      */
     public function up()
     {
-        Schema::create('hhp_prev_pma', function (Blueprint $table) {
-            $table->unsignedInteger('hhp_id');
+        Schema::create('histories', function (Blueprint $table) {
             $table->unsignedInteger('pma_id');
-            $table->timestamps();
-
-            $table->primary(['hhp_id', 'pma_id'], 'id');
-        });
-
-        Schema::create('hht_prev_pma', function (Blueprint $table) {
-            $table->unsignedInteger('hht_id');
-            $table->unsignedInteger('pma_id');
-            $table->timestamps();
-
-            $table->primary(['hht_id', 'pma_id'], 'id');
+            $table->unsignedInteger('history_id');
+            $table->string('history_type');
         });
     }
 
@@ -37,7 +27,6 @@ class CreateTableHistories extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('hhp_prev_pma');
-        Schema::dropIfExists('hht_prev_pma');
+        Schema::dropIfExists('histories');
     }
 }

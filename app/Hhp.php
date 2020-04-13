@@ -20,9 +20,9 @@ class Hhp extends Model
     return $this->belongsTo(Pma::class, 'pma_id', 'id');
   }
 
-  public function prevPma()
+  public function histories()
   {
-    return $this->belongsToMany(Pma::class, 'hhp_prev_pma', 'hhp_id');
+    return $this->morphToMany(Pma::class, 'history', 'histories');
   }
 
   public static function selectOpts()

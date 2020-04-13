@@ -15,7 +15,7 @@ class HhtController extends Controller
 
   public function show($id)
   {
-    $data = Hht::with(['prevPma.pma.district', 'repairs.pma.district', 'pma.district', 'pma.hhp'])->findOrFail($id);
+    $data = Hht::with(['histories.district', 'repairs.pma.district', 'pma.district', 'pma.hhp'])->findOrFail($id);
 
     return response()->json(['data' => $data]);
   }

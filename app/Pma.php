@@ -30,6 +30,26 @@ class Pma extends Model
     return $this->hasMany(Repair::class, 'pma_id', 'id');
   }
 
+  public function hht_histories()
+  {
+    return $this->morphByMany(Hht::class, 'history');
+  }
+
+  public function hhp_histories()
+  {
+    return $this->morphByMany(Hhp::class, 'history');
+  }
+
+  // public function hht_histories()
+  // {
+  //   return $this->hasMany(History::class, 'pma_id', 'id');
+  // }
+
+  // public function hhp_histories()
+  // {
+  //   return $this->hasMany(History::class, 'pma_id', 'id');
+  // }
+
   public static function selectOpts($details = false)
   {
     if ($details) {

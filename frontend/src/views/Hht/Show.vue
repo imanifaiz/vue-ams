@@ -74,10 +74,10 @@
         <template v-slot:body="{ rows }">
           <tbody>
             <tr v-for="(d, index) in rows" :key="index">
-              <td>{{ d.pma.name }}</td>
-              <td>{{ d.pma.pma_code }}</td>
-              <td>{{ d.pma.pma_id }}</td>
-              <td>{{ d.pma.district.name }}</td>
+              <td>{{ d.name }}</td>
+              <td>{{ d.pma_code }}</td>
+              <td>{{ d.pma_id }}</td>
+              <td>{{ d.district.name }}</td>
             </tr>
           </tbody>
         </template>
